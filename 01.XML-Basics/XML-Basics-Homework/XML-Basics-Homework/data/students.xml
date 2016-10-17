@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="./StyleSheet.xslt"?>
+<students:students xmlns:students="http://www.w3.org/myApp/students">
+  <students:student>
+    <students:name>Name</students:name>
+    <students:sex>Sex</students:sex>
+    <students:birthdate>Birth date</students:birthdate>
+    <students:phonenumber>Phone number</students:phonenumber>
+    <students:email>Email</students:email>
+    <students:course>Course</students:course>
+    <students:specialty>Specialty</students:specialty>
+    <students:facultynumber>Faculty number</students:facultynumber>
+    <students:exams xmlns:exams="http://www.w3.org/myApp/students">
+      <exams:exam>
+        <exams:name>Name</exams:name>
+        <exams:tutor>Tutor</exams:tutor>
+        <exams:score>Score</exams:score>
+      </exams:exam>
+    </students:exams>
+  </students:student>
+</students:students>

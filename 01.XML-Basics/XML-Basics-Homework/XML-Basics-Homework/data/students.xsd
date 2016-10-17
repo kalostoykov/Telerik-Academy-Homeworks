@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:exams="http://www.w3.org/myApp/students" xmlns:students="http://www.w3.org/myApp/students" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://www.w3.org/myApp/students" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="students">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="student">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="name" type="xs:string" />
+              <xs:element name="sex" type="xs:string" />
+              <xs:element name="birthdate" type="xs:string" />
+              <xs:element name="phonenumber" type="xs:string" />
+              <xs:element name="email" type="xs:string" />
+              <xs:element name="course" type="xs:string" />
+              <xs:element name="specialty" type="xs:string" />
+              <xs:element name="facultynumber" type="xs:string" />
+              <xs:element name="exams">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="exam">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="name" type="xs:string" />
+                          <xs:element name="tutor" type="xs:string" />
+                          <xs:element name="score" type="xs:string" />
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
