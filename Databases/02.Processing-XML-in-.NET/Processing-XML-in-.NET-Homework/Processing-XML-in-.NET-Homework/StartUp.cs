@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Processing_XML_in_.NET_Homework
 {
-    class Program
+    class StartUp
     {
         static void Main(string[] args)
         {
