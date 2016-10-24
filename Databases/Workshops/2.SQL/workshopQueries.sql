@@ -64,5 +64,6 @@ EXECUTE sp_rename 'Orders.CityId', 'ShipCityId', 'COLUMN'
 
 -- task 9
 UPDATE Orders
-SET Orders.ShipCity = (SELECT CityId FROM Cities
-WHERE Cities.Name = Orders.ShipCity)
+SET Orders.ShipCityId = ( SELECT Cities.CityId
+	FROM Cities
+	WHERE Orders.ShipCity = Cities.Name)
