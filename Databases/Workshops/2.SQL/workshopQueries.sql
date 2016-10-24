@@ -58,3 +58,5 @@ INSERT INTO Cities
 -- task 7
 ALTER TABLE Orders
 ADD CityId INT FOREIGN KEY REFERENCES Cities(CityId)
+
+-- task 8
