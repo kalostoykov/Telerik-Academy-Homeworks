@@ -100,3 +100,18 @@ UNION
 SELECT o.ShipCountry
 	FROM Orders AS o
 	WHERE o.ShipCountry IS NOT NULL
+
+-- task 14
+-- Should check if this query is correct
+
+UPDATE Cities
+SET Cities.CountryId = (
+SELECT DISTINCT Countries.CountryId
+FROM Countries
+LEFT JOIN Employees
+ON Countries.Name = Employees.Country
+LEFT JOIN Customers
+ON Countries.Name = Customers.Country
+LEFT JOIN Orders
+ON Countries.Name = Orders.ShipCountry
+WHERE Cities.Name = Employees.City OR Cities.Name = Customers.City OR Cities.CityId = Orders.ShipCityId)
