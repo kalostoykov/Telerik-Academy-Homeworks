@@ -62,3 +62,22 @@ GO
 EXEC usp_PersonsWithBalanceHigherThen 43
 
 GO
+
+-- task 3: Create a function that accepts as parameters – sum, yearly interest rate and number of months.
+	--It should calculate and return the new sum.
+    --Write a SELECT to test whether the function works as expected.
+
+CREATE FUNCTION ufn_CalculateMoneyBasedOnInterestRateAndNumberOfMounths(@amount money, @interestRate money, @mountsCount int)
+RETURNS money
+AS
+BEGIN
+	DECLARE @result money, @interest money
+	SET @interest = (@interestRate / 12) * @mountsCount
+	SET @result = (@amount * @interest) + @amount
+
+	RETURN @result
+END
+
+GO
+
+SELECT dbo.ufn_CalculateMoneyBasedOnInterestRateAndNumberOfMounths(10, 11, 12) AS [Interest]
