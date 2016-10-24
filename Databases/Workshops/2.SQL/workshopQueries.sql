@@ -71,3 +71,10 @@ SET Orders.ShipCityId = ( SELECT Cities.CityId
 -- task 10
 ALTER TABLE Orders
 DROP COLUMN ShipCity
+
+-- task 11
+CREATE TABLE Countries
+(
+	CountryId INT PRIMARY KEY IDENTITY,
+	Name NVARCHAR(19) NOT NULL UNIQUE
+)
