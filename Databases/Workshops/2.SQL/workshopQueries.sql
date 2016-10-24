@@ -60,3 +60,9 @@ ALTER TABLE Orders
 ADD CityId INT FOREIGN KEY REFERENCES Cities(CityId)
 
 -- task 8
+EXECUTE sp_rename 'Orders.CityId', 'ShipCityId', 'COLUMN'
+
+-- task 9
+UPDATE Orders
+SET Orders.ShipCity = (SELECT CityId FROM Cities
+WHERE Cities.Name = Orders.ShipCity)
