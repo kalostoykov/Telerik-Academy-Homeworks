@@ -82,3 +82,21 @@ CREATE TABLE Countries
 -- task 12
 ALTER TABLE Cities
 ADD CountryId INT FOREIGN KEY REFERENCES Countries(CountryId)
+
+-- task 13
+INSERT INTO Countries
+SELECT e.Country
+	FROM Employees AS e
+	WHERE e.Country IS NOT NULL
+UNION
+SELECT c.Country
+	FROM Customers AS c
+	WHERE c.Country IS NOT NULL
+UNION
+SELECT s.Country
+	FROM Suppliers AS s
+	WHERE s.Country IS NOT NULL
+UNION
+SELECT o.ShipCountry
+	FROM Orders AS o
+	WHERE o.ShipCountry IS NOT NULL
