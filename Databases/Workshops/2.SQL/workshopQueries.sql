@@ -32,7 +32,7 @@ ADD CityId INT FOREIGN KEY REFERENCES Cities(CityId)
 -- task 4
 UPDATE Employees
 SET Employees.CityId = (SELECT CityId FROM Cities
-WHERE Cities.Name = City)
+WHERE Cities.Name = Employees.City)
 
 UPDATE Customers
 SET Customers.CityId = (SELECT CityId FROM Cities
@@ -55,3 +55,6 @@ INSERT INTO Cities
 	FROM Cities
 )
 
+-- task 7
+ALTER TABLE Orders
+ADD CityId INT FOREIGN KEY REFERENCES Cities(CityId)
