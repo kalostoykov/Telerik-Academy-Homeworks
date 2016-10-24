@@ -1,4 +1,7 @@
--- task 1
+-- task 1 Create a database with two tables: Persons(Id(PK), FirstName, LastName, SSN) and Accounts(Id(PK), PersonId(FK), Balance).
+	--Insert few records for testing.
+    --Write a stored procedure that selects the full names of all persons.
+
 CREATE TABLE Persons
 (
 	Id INT IDENTITY PRIMARY KEY,
