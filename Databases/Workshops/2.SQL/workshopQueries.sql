@@ -67,3 +67,7 @@ UPDATE Orders
 SET Orders.ShipCityId = ( SELECT Cities.CityId
 	FROM Cities
 	WHERE Orders.ShipCity = Cities.Name)
+
+-- task 10
+ALTER TABLE Orders
+DROP COLUMN ShipCity
