@@ -67,7 +67,7 @@ GO
 	--It should calculate and return the new sum.
     --Write a SELECT to test whether the function works as expected.
 
-CREATE FUNCTION ufn_CalculateMoneyBasedOnInterestRateAndNumberOfMounths(@amount money, @interestRate money, @mountsCount int)
+CREATE FUNCTION ufn_CalculateInterest(@amount money, @interestRate money, @mountsCount int)
 RETURNS money
 AS
 BEGIN
@@ -80,4 +80,29 @@ END
 
 GO
 
-SELECT dbo.ufn_CalculateMoneyBasedOnInterestRateAndNumberOfMounths(10, 11, 12) AS [Interest]
+SELECT dbo.ufn_CalculateInterest(10, 11, 12) AS [Interest]
+
+GO
+
+-- task 4: Create a stored procedure that uses the function from the previous example to give an interest to a person's account for one month.
+	--It should take the AccountId and the interest rate as parameters.
+CREATE PROCEDURE usp_ApplyInterestToAccount(@accountId int, @interestRate money)
+AS
+	UPDATE Accounts
+	SET Accounts.Balance = dbo.ufn_CalculateInterest(
+		(SELECT a.Balance FROM Accounts AS a WHERE a.Id = @accountId), 
+		@interestRate, 
+		1)
+	WHERE Accounts.Id = @accountId
+
+GO
+
+EXEC usp_ApplyInterestToAccount 1, 42
+
+GO
+
+SELECT a.Balance
+FROM Accounts AS a
+WHERE a.Id = 1
+
+GO
