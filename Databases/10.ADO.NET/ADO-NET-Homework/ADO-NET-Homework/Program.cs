@@ -2,6 +2,7 @@
 using System.CodeDom;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -34,9 +35,15 @@ namespace ADO_NET_Homework
             Console.WriteLine(new string('-', 50));
 
             Console.WriteLine("Task 4:");
-            AddProduct("NewProduct", 4, 1, 1.20m);
+            //AddProduct("NewProduct", 4, 1, 1.20m);
 
             Console.WriteLine(new string('-', 50));
+
+            Console.WriteLine("Task 5:");
+            ExtractAllCategoryImages();
+
+            Console.WriteLine(new string('-', 50));
+
         }
 
         private static void CategoriesCount()
@@ -135,6 +142,48 @@ namespace ADO_NET_Homework
             }
 
             connection.Close();
+        }
+
+        private static void ExtractAllCategoryImages()
+        {
+            SqlConnection connection = new SqlConnection(ConnectionString);
+
+            connection.Open();
+
+            using (connection)
+            {
+                SqlCommand command = new SqlCommand("SELECT CategoryName, Picture FROM Categories", connection);
+                SqlDataReader reader = command.ExecuteReader();
+
+                using (reader)
+                {
+                    while (reader.Read())
+                    {
+                        string categoryName = (string)reader["CategoryName"];
+                        categoryName = categoryName.Replace('/', '-');
+
+                        byte[] fileContent = (byte[])reader["Picture"];
+                        string fileName = categoryName;
+                        string fileFormat = "jpg";
+                        string path = "../../Images/";
+
+                        SaveImage(path, fileName, fileFormat, fileContent);
+                    }
+                }
+            }
+
+            connection.Close();
+        }
+
+        private static void SaveImage(string filePath, string fileName, string fileFormat, byte[] fileContent)
+        {
+            string imageFullInfo = $"{filePath}{fileName}.{fileFormat}";
+            Console.WriteLine(imageFullInfo);
+            FileStream stream = File.OpenWrite(imageFullInfo);
+            using (stream)
+            {
+                stream.Write(fileContent, 78, fileContent.Length - 78);
+            }
         }
     }
 }
