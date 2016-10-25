@@ -157,3 +157,15 @@ FROM Accounts AS a
 WHERE a.Id = 1
 
 GO
+
+-- task 6: Create another table – Logs(LogID, AccountID, OldSum, NewSum).
+	--Add a trigger to the Accounts table that enters a new entry into the Logs table every time the sum on an account changes.
+CREATE TABLE Logs
+(
+	Id INT IDENTITY PRIMARY KEY,
+	AccountId INT,
+	OldSum MONEY,
+	NewSum MONEY
+)
+
+GO
