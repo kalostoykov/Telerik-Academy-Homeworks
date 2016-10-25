@@ -169,3 +169,31 @@ CREATE TABLE Logs
 )
 
 GO
+
+CREATE TRIGGER tr_OnAccountBalanceChange 
+ON Accounts 
+AFTER UPDATE
+AS
+	BEGIN
+	DECLARE @oldSum money,
+		@newSum money,
+		@accountId int
+
+	SET @oldSum = (SELECT DELETED.Balance 
+					FROM DELETED)
+	SET @newSum = (
+		SELECT INSERTED.Balance 
+		FROM INSERTED 
+		WHERE INSERTED.Id = (
+			SELECT DELETED.Id 
+			FROM DELETED)
+		)
+
+	SET @accountId = (
+		SELECT INSERTED.Id
+		FROM INSERTED
+	)
+
+	INSERT INTO Logs
+	VALUES(@accountId, @oldSum, @newSum)
+	END
