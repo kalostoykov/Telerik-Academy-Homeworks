@@ -116,7 +116,7 @@ AS
 	BEGIN TRANSACTION
 	
 	UPDATE Accounts
-	SET Accounts.Balance = -(@amount) + @money
+	SET Accounts.Balance = (-@amount) + @money
 	WHERE Accounts.Id = @accountId
 	
 	COMMIT
@@ -125,7 +125,35 @@ GO
 
 EXEC usp_WithdrawMoney 1, 42
 
+GO
 
 SELECT a.Balance
 FROM Accounts AS a
 WHERE a.Id = 1
+
+GO
+
+CREATE PROCEDURE usp_DepositeMoney(@accountId int, @amount money)
+AS
+	DECLARE @money money
+	SET @money = (SELECT Accounts.Balance FROM Accounts WHERE Accounts.Id = @accountId)
+
+	BEGIN TRANSACTION
+	
+	UPDATE Accounts
+	SET Accounts.Balance = (@amount) + @money
+	WHERE Accounts.Id = @accountId
+	
+	COMMIT
+
+GO
+
+EXEC usp_DepositeMoney 1, 42
+
+GO
+
+SELECT a.Balance
+FROM Accounts AS a
+WHERE a.Id = 1
+
+GO
