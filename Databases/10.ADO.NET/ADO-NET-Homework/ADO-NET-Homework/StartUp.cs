@@ -10,7 +10,7 @@ using Microsoft.SqlServer.Server;
 
 namespace ADO_NET_Homework
 {
-    class Program
+    class StartUp
     {
         private const string ConnectionString = "Server=.\\sqlexpress; Database=Northwind; Integrated Security=true";
 
@@ -43,6 +43,8 @@ namespace ADO_NET_Homework
             ExtractAllCategoryImages();
 
             Console.WriteLine(new string('-', 50));
+
+            Console.WriteLine("Task 6:");
 
         }
 
@@ -168,6 +170,8 @@ namespace ADO_NET_Homework
                         string path = "../../Images/";
 
                         SaveImage(path, fileName, fileFormat, fileContent);
+
+                        Console.WriteLine($"Image {fileName}.{fileFormat} saved!");
                     }
                 }
             }
@@ -178,8 +182,8 @@ namespace ADO_NET_Homework
         private static void SaveImage(string filePath, string fileName, string fileFormat, byte[] fileContent)
         {
             string imageFullInfo = $"{filePath}{fileName}.{fileFormat}";
-            Console.WriteLine(imageFullInfo);
             FileStream stream = File.OpenWrite(imageFullInfo);
+
             using (stream)
             {
                 stream.Write(fileContent, 78, fileContent.Length - 78);
