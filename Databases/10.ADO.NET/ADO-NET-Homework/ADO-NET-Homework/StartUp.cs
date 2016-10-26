@@ -49,6 +49,10 @@ namespace ADO_NET_Homework
             Console.WriteLine("Task 9:");
             ExtractBooks();
 
+            Console.WriteLine(new string('-', 50));
+
+            FindBookByTitle("Title 1");
+
         }
 
         private static void CategoriesCount()
@@ -201,8 +205,38 @@ namespace ADO_NET_Homework
 
             using (connection)
             {
-                MySqlCommand command = new MySqlCommand(@"SELECT * FROM books",
+                MySqlCommand command = new MySqlCommand(@"SELECT title, author FROM books",
                                                     connection);
+
+                MySqlDataReader reader = command.ExecuteReader();
+
+                using (reader)
+                {
+                    while (reader.Read())
+                    {
+                        string bookTitle = reader["title"].ToString();
+                        string bookAuthor = reader["author"].ToString();
+
+                        Console.WriteLine("{0} , {1}", bookTitle, bookAuthor);
+                    }
+                }
+            }
+
+            connection.Close();
+        }
+
+        private static void FindBookByTitle(string title)
+        {
+            MySqlConnection connection = new MySqlConnection(MySqlConnectionString);
+
+            connection.Open();
+
+            using (connection)
+            {
+                MySqlCommand command = new MySqlCommand(@"SELECT title, author FROM books WHERE title = @title",
+                                                    connection);
+
+                command.Parameters.AddWithValue("@title", title);
 
                 MySqlDataReader reader = command.ExecuteReader();
 
