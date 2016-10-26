@@ -53,6 +53,10 @@ namespace ADO_NET_Homework
 
             FindBookByTitle("Title 1");
 
+            Console.WriteLine(new string('-', 50));
+
+            AddBook("New Book", "New Author");
+            ExtractBooks();
         }
 
         private static void CategoriesCount()
@@ -250,6 +254,28 @@ namespace ADO_NET_Homework
                         Console.WriteLine("{0} , {1}", bookTitle, bookAuthor);
                     }
                 }
+            }
+
+            connection.Close();
+        }
+
+        private static void AddBook(string title, string author, DateTime? publishDate = null, string isbn = null)
+        {
+            MySqlConnection connection = new MySqlConnection(MySqlConnectionString);
+
+            connection.Open();
+
+            using (connection)
+            {
+                MySqlCommand command = new MySqlCommand(@"INSERT INTO books(title, author, publishDate, isbn) VALUES (@title, @author, @publishDate, @isbn)",
+                                                    connection);
+
+                command.Parameters.AddWithValue("@title", title);
+                command.Parameters.AddWithValue("@author", author);
+                command.Parameters.AddWithValue("@publishDate", publishDate);
+                command.Parameters.AddWithValue("@isbn", isbn);
+
+                command.ExecuteNonQuery();
             }
 
             connection.Close();
