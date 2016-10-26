@@ -7,44 +7,47 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.SqlServer.Server;
+using MySql.Data.MySqlClient;
 
 namespace ADO_NET_Homework
 {
     class StartUp
     {
         private const string ConnectionString = "Server=.\\sqlexpress; Database=Northwind; Integrated Security=true";
+        private const string MySqlConnectionString = "SERVER=localhost;DATABASE=bookstore;UID=root;PWD=root;";
 
         static void Main(string[] args)
         {
             //I didn't have time to do the homework well
             //sorry for the bad code
 
-            Console.WriteLine("Task 1:");
-            CategoriesCount();
+            //Console.WriteLine("Task 1:");
+            //CategoriesCount();
 
-            Console.WriteLine(new string('-', 50));
+            //Console.WriteLine(new string('-', 50));
 
-            Console.WriteLine("Task 2:");
-            CategoriesNameAndDescription();
+            //Console.WriteLine("Task 2:");
+            //CategoriesNameAndDescription();
 
-            Console.WriteLine(new string('-', 50));
+            //Console.WriteLine(new string('-', 50));
 
-            Console.WriteLine("Task 3:");
-            ExtractCategoriesAndTheirProducts();
+            //Console.WriteLine("Task 3:");
+            //ExtractCategoriesAndTheirProducts();
 
-            Console.WriteLine(new string('-', 50));
+            //Console.WriteLine(new string('-', 50));
 
-            Console.WriteLine("Task 4:");
-            //AddProduct("NewProduct", 4, 1, 1.20m);
+            //Console.WriteLine("Task 4:");
+            ////AddProduct("NewProduct", 4, 1, 1.20m);
 
-            Console.WriteLine(new string('-', 50));
+            //Console.WriteLine(new string('-', 50));
 
-            Console.WriteLine("Task 5:");
-            ExtractAllCategoryImages();
+            //Console.WriteLine("Task 5:");
+            //ExtractAllCategoryImages();
 
-            Console.WriteLine(new string('-', 50));
+            //Console.WriteLine(new string('-', 50));
 
-            Console.WriteLine("Task 6:");
+            Console.WriteLine("Task 9:");
+            ExtractBooks();
 
         }
 
@@ -188,6 +191,34 @@ namespace ADO_NET_Homework
             {
                 stream.Write(fileContent, 78, fileContent.Length - 78);
             }
+        }
+
+        private static void ExtractBooks()
+        {
+            MySqlConnection connection = new MySqlConnection(MySqlConnectionString);
+
+            connection.Open();
+
+            using (connection)
+            {
+                MySqlCommand command = new MySqlCommand(@"SELECT * FROM books",
+                                                    connection);
+
+                MySqlDataReader reader = command.ExecuteReader();
+
+                using (reader)
+                {
+                    while (reader.Read())
+                    {
+                        string bookTitle = reader["title"].ToString();
+                        string bookAuthor = reader["author"].ToString();
+
+                        Console.WriteLine("{0} , {1}", bookTitle, bookAuthor);
+                    }
+                }
+            }
+
+            connection.Close();
         }
     }
 }
