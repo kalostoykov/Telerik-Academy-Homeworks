@@ -1,5 +1,7 @@
 ﻿using System;
+using System.CodeDom;
 using System.Collections.Generic;
+using System.Dynamic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,13 +15,15 @@ namespace Entity_Framework_homework
 
         static void Main(string[] args)
         {
-            InsertCustomer(CustomerId, "new Contact name");
+            //InsertCustomer(CustomerId, "new Contact name");
 
             var customer = GetCustomerById(CustomerId);
 
             UpdateCustomerCompanyName(customer, "NEW COMPANY NAME");
-        }
 
+            DeleteCustomer(customer);
+        }
+        
         private static Customer GetCustomerById(string id)
         {
             var foundCustomer = DAO.GetCustomerById(id);
@@ -43,6 +47,11 @@ namespace Entity_Framework_homework
             customer.CompanyName = companyName;
 
             DAO.SaveUpdatesToCustomer(customer);
+        }
+
+        private static void DeleteCustomer(Customer customer)
+        {
+            DAO.DeleteCustomer(customer);
         }
     }
 }
