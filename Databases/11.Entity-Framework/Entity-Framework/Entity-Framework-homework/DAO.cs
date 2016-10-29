@@ -17,6 +17,19 @@ namespace Entity_Framework_homework
             return dbContext;
         }
 
+        public static Customer GetCustomerById(string id)
+        {
+            var dbContext = GetDBContext();
+            var foundCustomer = dbContext.Customers.Find(id);
+
+            if (foundCustomer == null)
+            {
+                throw new ArgumentNullException("Customer does not exist!");
+            }
+
+            return foundCustomer;
+        }
+
         public static void InsertCustomer(Customer customer)
         {
             if (customer == null)
@@ -25,28 +38,18 @@ namespace Entity_Framework_homework
             }
 
             var dbContext = GetDBContext();
+
+            if (dbContext.Customers.Find(customer.CustomerID) != null)
+            {
+                throw new ArgumentException("This customer already exists in the database!");    
+            }
+
             dbContext.Customers.Add(customer);
 
-            try
-            {
-                dbContext.SaveChanges();
-            }
-            catch (DbEntityValidationException e)
-            {
-                foreach (var eve in e.EntityValidationErrors)
-                {
-                    Console.WriteLine("Entity of type \"{0}\" in state \"{1}\" has the following validation errors:",
-                        eve.Entry.Entity.GetType().Name, eve.Entry.State);
-                    foreach (var ve in eve.ValidationErrors)
-                    {
-                        Console.WriteLine("- Property: \"{0}\", Error: \"{1}\"",
-                            ve.PropertyName, ve.ErrorMessage);
-                    }
-                }
-                throw;
-            }
-
+            DbContextSaveChanges(dbContext);
         }
+
+        
 
         public static void SaveUpdatesToCustomer(Customer customerWithUpdates)
         {
@@ -66,7 +69,7 @@ namespace Entity_Framework_homework
             var dataToUpdate = dbContext.Entry(customerToUpdate).CurrentValues;
             dataToUpdate.SetValues(customerWithUpdates);
 
-            dbContext.SaveChanges();
+            DbContextSaveChanges(dbContext);
         }
 
         public static void DeleteCustomer(Customer customer)
@@ -86,7 +89,29 @@ namespace Entity_Framework_homework
 
             dbContext.Customers.Remove(foundCustomer);
 
-            dbContext.SaveChanges();
+            DbContextSaveChanges(dbContext);
+        }
+
+        private static void DbContextSaveChanges(NorthwindEntities dbContext)
+        {
+            try
+            {
+                dbContext.SaveChanges();
+            }
+            catch (DbEntityValidationException e)
+            {
+                foreach (var eve in e.EntityValidationErrors)
+                {
+                    Console.WriteLine("Entity of type \"{0}\" in state \"{1}\" has the following validation errors:",
+                        eve.Entry.Entity.GetType().Name, eve.Entry.State);
+                    foreach (var ve in eve.ValidationErrors)
+                    {
+                        Console.WriteLine("- Property: \"{0}\", Error: \"{1}\"",
+                            ve.PropertyName, ve.ErrorMessage);
+                    }
+                }
+                throw;
+            }
         }
     }
 }

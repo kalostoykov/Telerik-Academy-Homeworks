@@ -14,17 +14,35 @@ namespace Entity_Framework_homework
         static void Main(string[] args)
         {
             InsertCustomer(CustomerId, "new Contact name");
+
+            var customer = GetCustomerById(CustomerId);
+
+            UpdateCustomerCompanyName(customer, "NEW COMPANY NAME");
         }
 
-        private static void InsertCustomer(string id,string name)
+        private static Customer GetCustomerById(string id)
+        {
+            var foundCustomer = DAO.GetCustomerById(id);
+
+            return foundCustomer;
+        }
+
+        private static void InsertCustomer(string id, string companyName)
         {
             var customer = new Customer()
             {
                 CustomerID = id,
-                CompanyName = name
+                CompanyName = companyName
             };
 
             DAO.InsertCustomer(customer);
+        }
+
+        private static void UpdateCustomerCompanyName(Customer customer, string companyName)
+        {
+            customer.CompanyName = companyName;
+
+            DAO.SaveUpdatesToCustomer(customer);
         }
     }
 }
