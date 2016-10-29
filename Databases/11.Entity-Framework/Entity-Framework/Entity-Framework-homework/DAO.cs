@@ -48,9 +48,7 @@ namespace Entity_Framework_homework
 
             DbContextSaveChanges(dbContext);
         }
-
         
-
         public static void SaveUpdatesToCustomer(Customer customerWithUpdates)
         {
             if (customerWithUpdates == null)
