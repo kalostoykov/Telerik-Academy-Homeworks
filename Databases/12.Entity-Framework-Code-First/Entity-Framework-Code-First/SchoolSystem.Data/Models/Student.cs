@@ -18,6 +18,7 @@ namespace SchoolSystem.Data.Models
             this.homeworks = new HashSet<Homework>();
         }
 
+        [Key]
         public int Id { get; set; }
 
         [MinLength(3)]

@@ -9,10 +9,11 @@ namespace SchoolSystem.Data.Models
 {
     public class Homework
     {
+        [Key]
         public int Id { get; set; }
 
         [MinLength(5)]
-        [MaxLength(40)]
+        [MaxLength(100)]
         [Required]
         public string Content { get; set; }
 

@@ -18,6 +18,7 @@ namespace SchoolSystem.Data.Models
             this.homeworks = new HashSet<Homework>();
         }
 
+        [Key]
         public int Id { get; set; }
 
         [MinLength(3)]
@@ -26,7 +27,7 @@ namespace SchoolSystem.Data.Models
         public string Name { get; set; }
 
         [MinLength(3)]
-        [MaxLength(20)]
+        [MaxLength(100)]
         public string Description { get; set; }
 
         public string Materials { get; set; }
