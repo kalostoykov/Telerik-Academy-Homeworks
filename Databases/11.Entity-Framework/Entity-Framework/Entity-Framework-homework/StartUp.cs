@@ -28,7 +28,12 @@ namespace Entity_Framework_homework
             //DeleteCustomerByIdSql(CustomerId);
 
             //GetCustomersWithOrdersFromYearShippedToCountry(1997, "Canada");
-            GetCustomersWithOrdersFromYearShippedToCountrySql(1997, "Canada");
+            //GetCustomersWithOrdersFromYearShippedToCountrySql(1997, "Canada");
+
+            string region = "SP";
+            var startDate = new DateTime(1990, 1, 1);
+            var endDate = new DateTime(2000, 1, 1);
+            GetAllSalesByRegionAndPeriod("SP", startDate, endDate);
         }
         
         private static void InsertCustomerSql(string customerId, string companyName)
@@ -164,6 +169,18 @@ namespace Entity_Framework_homework
             foreach (var customer in customers)
             {
                 Console.WriteLine(customer.ContactName);
+            }
+        }
+
+        private static void GetAllSalesByRegionAndPeriod(string region, DateTime startDate, DateTime endDate)
+        {
+            var orders = DAO.GetAllSalesByRegionAndPeriod(region, startDate, endDate);
+
+            Console.WriteLine($"All orders from {region} region between {startDate} - {endDate}");
+
+            foreach (var order in orders)
+            {
+                Console.WriteLine($"Order {order.OrderID}: {order.Customer.ContactName} - {order.ShipCountry}");
             }
         }
     }

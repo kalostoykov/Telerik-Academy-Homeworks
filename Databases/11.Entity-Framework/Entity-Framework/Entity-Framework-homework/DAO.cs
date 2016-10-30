@@ -103,6 +103,19 @@ namespace Entity_Framework_homework
             return customers;
         }
 
+        public static IEnumerable<Order> GetAllSalesByRegionAndPeriod(string region, DateTime startDate, DateTime endDate)
+        {
+            var dbContext = GetDBContext();
+
+            var orders = dbContext.Orders
+                .Where(o => startDate <= o.OrderDate && o.OrderDate <= endDate)
+                .Where(o => o.ShipRegion == region)               
+                .ToList();
+                
+
+            return orders;
+        }
+
         private static void DbContextSaveChanges(NorthwindEntities dbContext)
         {
             try
