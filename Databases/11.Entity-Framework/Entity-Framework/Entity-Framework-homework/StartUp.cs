@@ -14,6 +14,7 @@ namespace Entity_Framework_homework
     public class StartUp
     {
         private const string CustomerId = "QWERT";
+        private const string TwinName = "NorthwindTwin";
 
         static void Main(string[] args)
         {
@@ -30,10 +31,12 @@ namespace Entity_Framework_homework
             //GetCustomersWithOrdersFromYearShippedToCountry(1997, "Canada");
             //GetCustomersWithOrdersFromYearShippedToCountrySql(1997, "Canada");
 
-            string region = "SP";
-            var startDate = new DateTime(1990, 1, 1);
-            var endDate = new DateTime(2000, 1, 1);
-            GetAllSalesByRegionAndPeriod("SP", startDate, endDate);
+            //string region = "SP";
+            //var startDate = new DateTime(1990, 1, 1);
+            //var endDate = new DateTime(2000, 1, 1);
+            //GetAllSalesByRegionAndPeriod("SP", startDate, endDate);
+
+            CreateNorthwindTwinDatabase(TwinName);
         }
         
         private static void InsertCustomerSql(string customerId, string companyName)
@@ -182,6 +185,11 @@ namespace Entity_Framework_homework
             {
                 Console.WriteLine($"Order {order.OrderID}: {order.Customer.ContactName} - {order.ShipCountry}");
             }
+        }
+
+        private static void CreateNorthwindTwinDatabase(string twinName)
+        {
+            DAO.CreateNorthwindTwinDatabase(twinName);
         }
     }
 }

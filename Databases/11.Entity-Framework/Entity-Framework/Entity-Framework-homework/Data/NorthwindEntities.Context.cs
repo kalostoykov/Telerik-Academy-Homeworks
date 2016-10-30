@@ -21,7 +21,12 @@ namespace Entity_Framework_homework.Data
             : base("name=NorthwindEntities")
         {
         }
-    
+
+        public NorthwindEntities(string twinName)
+            : base($"name={twinName}")
+        {
+        }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             throw new UnintentionalCodeFirstException();

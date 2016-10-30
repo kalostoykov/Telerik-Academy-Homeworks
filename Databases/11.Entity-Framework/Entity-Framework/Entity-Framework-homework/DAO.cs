@@ -109,11 +109,17 @@ namespace Entity_Framework_homework
 
             var orders = dbContext.Orders
                 .Where(o => startDate <= o.OrderDate && o.OrderDate <= endDate)
-                .Where(o => o.ShipRegion == region)               
+                .Where(o => o.ShipRegion == region)       
                 .ToList();
                 
 
             return orders;
+        }
+
+        public static void CreateNorthwindTwinDatabase(string twinName)
+        {
+            var dbContext = new NorthwindEntities(twinName);
+            dbContext.Database.CreateIfNotExists();
         }
 
         private static void DbContextSaveChanges(NorthwindEntities dbContext)
