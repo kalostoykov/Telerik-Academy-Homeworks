@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Dynamic;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using Entity_Framework_homework.Data;
@@ -17,16 +18,19 @@ namespace Entity_Framework_homework
         static void Main(string[] args)
         {
             //InsertCustomer(CustomerId, "new Company name");
-            var customer = GetCustomerById(CustomerId);
-            UpdateCustomerCompanyName(customer, "NEW COMPANY NAME");
-            DeleteCustomer(customer);
+            //var customer = GetCustomerById(CustomerId);
+            //UpdateCustomerCompanyName(customer, "NEW COMPANY NAME");
+            //DeleteCustomer(customer);
 
             //Insert, update, delete with NativeSQL
-            InsertCustomerSql(CustomerId, "new Company name");
-            UpdateCustomerCompanyNameSql(CustomerId, "NEW COMPANY NAME");
-            DeleteCustomerByIdSql(CustomerId);
-        }
+            //InsertCustomerSql(CustomerId, "new Company name");
+            //UpdateCustomerCompanyNameSql(CustomerId, "NEW COMPANY NAME");
+            //DeleteCustomerByIdSql(CustomerId);
 
+            //GetCustomersWithOrdersFromYearShippedToCountry(1997, "Canada");
+            GetCustomersWithOrdersFromYearShippedToCountrySql(1997, "Canada");
+        }
+        
         private static void InsertCustomerSql(string customerId, string companyName)
         {
             if (String.IsNullOrEmpty(customerId))
@@ -125,6 +129,42 @@ namespace Entity_Framework_homework
         private static void DeleteCustomer(Customer customer)
         {
             DAO.DeleteCustomer(customer);
+        }
+
+        private static void GetCustomersWithOrdersFromYearShippedToCountry(int year, string country)
+        {
+            var customers = DAO.GetCustomersWithOrdersFromYearShippedToCountry(year, country);
+
+            Console.WriteLine($"Customers ordered to {country} in {year}");
+            foreach (var customer in customers)
+            {
+                Console.WriteLine(customer.ContactName);
+            }
+        }
+
+        private static void GetCustomersWithOrdersFromYearShippedToCountrySql(int year, string country)
+        {
+            var dbContext = new NorthwindEntities();
+            var query = @"SELECT *
+                          FROM Customers as c
+                          LEFT JOIN Orders as o
+                          ON o.CustomerID = c.CustomerID
+                          WHERE YEAR(o.OrderDate) = @year AND o.ShipCountry = @country";
+
+            var customers = dbContext.Customers
+                            .SqlQuery(
+                                query, 
+                                new SqlParameter("@year", year),
+                                new SqlParameter("@country", country)
+                            )
+                            .Distinct()
+                            .ToList();
+
+            Console.WriteLine($"Customers ordered to {country} in {year}");
+            foreach (var customer in customers)
+            {
+                Console.WriteLine(customer.ContactName);
+            }
         }
     }
 }

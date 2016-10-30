@@ -90,6 +90,19 @@ namespace Entity_Framework_homework
             DbContextSaveChanges(dbContext);
         }
 
+        public static IEnumerable<Customer> GetCustomersWithOrdersFromYearShippedToCountry(int year, string shippedTo)
+        {
+            var dbContext = GetDBContext();
+
+            var customers = dbContext.Orders
+                .Where(o => o.OrderDate.Value.Year == year && o.ShipCountry == shippedTo)
+                .Select(o => o.Customer)
+                .Distinct()
+                .ToList();
+
+            return customers;
+        }
+
         private static void DbContextSaveChanges(NorthwindEntities dbContext)
         {
             try
