@@ -118,8 +118,8 @@ namespace Entity_Framework_homework
 
         public static void CreateNorthwindTwinDatabase(string twinName)
         {
-            var dbContext = new NorthwindEntities(twinName);
-            dbContext.Database.CreateIfNotExists();
+            var dbContext = new NorthwindEntities();
+            var dbContextTwin = new NorthwindEntities(twinName);
         }
 
         private static void DbContextSaveChanges(NorthwindEntities dbContext)

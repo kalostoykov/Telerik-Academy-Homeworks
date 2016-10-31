@@ -14,7 +14,7 @@ namespace Entity_Framework_homework
     public class StartUp
     {
         private const string CustomerId = "QWERT";
-        private const string TwinName = "NorthwindTwin";
+        private const string TwinName = "NorthwindEntitiesTwin";
 
         static void Main(string[] args)
         {
