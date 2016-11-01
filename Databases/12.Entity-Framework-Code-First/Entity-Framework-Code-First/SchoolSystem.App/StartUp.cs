@@ -17,28 +17,14 @@ namespace SchoolSystem.App
         {
             Database.SetInitializer(new MigrateDatabaseToLatestVersion<SchoolSystemDbContext, Configuration>());
 
-            var dbContext = new SchoolSystemDbContext();
+            var dbContext = new SchoolSystemDbContext(); 
 
-            var newStudent = new Student()
-            {
-                FirstName = "Kiro",
-                LastName = "Kirov",
-                Number = "349857132"
-            };
+            //dbContext.Database.CreateIfNotExists();
 
-            AddNewStudent(dbContext, newStudent);
+            var courses = dbContext.Courses.ToList();
 
             dbContext.SaveChanges();
-        }
-
-        private static void AddNewStudent(SchoolSystemDbContext context, Student newStudent)
-        {
-            var student = context.Students.First(s => s.FirstName == newStudent.FirstName);
-
-            if (student == null)
-            {
-                context.Students.Add(newStudent);
-            }
+            
         }
     }
 }

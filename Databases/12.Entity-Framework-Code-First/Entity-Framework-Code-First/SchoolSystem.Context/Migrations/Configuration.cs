@@ -11,33 +11,52 @@ namespace SchoolSystem.Context.Migrations
         public Configuration()
         {
             this.AutomaticMigrationsEnabled = true;
-            this.AutomaticMigrationDataLossAllowed = false;
-            ContextKey = "SchoolSystem.Context.SchoolSystemDbContext";
+            this.AutomaticMigrationDataLossAllowed = true;
+            //ContextKey = "SchoolSystem.Context.SchoolSystemDbContext";
         }
 
         protected override void Seed(SchoolSystemDbContext context)
         {
             if (!context.Students.Any())
             {
-                context.Students.AddOrUpdate(
-                    new Student { FirstName = "Gosho", LastName = "Goshev", Number = "123123113" }
-                );
-            }
+                Student[] students =
+                {
+                    new Student { FirstName = "Gosho", LastName = "Goshev", Number = "123123113" },
+                    new Student { FirstName = "Goshoooo", LastName = "Goshevvvvv", Number = "19823712" }
+                };
 
-            if (!context.Courses.Any())
-            {
-                context.Courses.AddOrUpdate(
-                    new Course { Name = "Math", Description = "Study algorithms all day long" }
-                );
-            }
+                foreach (var student in students)
+                {
+                    context.Students.Add(student);
+                }
 
-            if (!context.Courses.Any())
-            {
-                context.Homeworks.AddOrUpdate(
-                    new Homework { Content = "Design the following database using the EF code first aproach", TimeSent = DateTime.Now }
-                );
-            }
+                context.SaveChanges();
 
+                if (!context.Courses.Any())
+                {
+                    Course[] courses =
+                    {
+                        new Course { Name = "Math", Description = "Study algorithms all day long" },
+                        new Course { Name = "Databases", Description = "Create dabatases all the time" }
+                    };
+
+                    foreach (var course in courses)
+                    {
+                        context.Courses.Add(course);
+                    }
+
+                    context.SaveChanges();
+                }
+
+                if (!context.Homeworks.Any())
+                {
+                    context.Homeworks.Add(
+                        new Homework { Content = "Design the following database using the EF code first aproach" }
+                    );
+
+                    context.SaveChanges();
+                }
+            }
         }
     }
 }
