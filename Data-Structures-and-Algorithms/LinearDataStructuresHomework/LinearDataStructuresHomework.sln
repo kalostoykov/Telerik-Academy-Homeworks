@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "6.RemoveOddAccurances", "6.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "7.CountOccurances", "7.CountOccurances\7.CountOccurances.csproj", "{9C07895C-1232-438F-BB6C-4FDCD9C8691E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "9.PrintSequenceMembers", "9.PrintSequenceMembers\9.PrintSequenceMembers.csproj", "{415C31F1-ED7B-4D62-8736-DB37E3A44048}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{9C07895C-1232-438F-BB6C-4FDCD9C8691E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9C07895C-1232-438F-BB6C-4FDCD9C8691E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9C07895C-1232-438F-BB6C-4FDCD9C8691E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{415C31F1-ED7B-4D62-8736-DB37E3A44048}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{415C31F1-ED7B-4D62-8736-DB37E3A44048}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{415C31F1-ED7B-4D62-8736-DB37E3A44048}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{415C31F1-ED7B-4D62-8736-DB37E3A44048}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
