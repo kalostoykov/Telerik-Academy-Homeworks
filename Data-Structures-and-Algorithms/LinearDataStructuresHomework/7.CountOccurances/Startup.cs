@@ -12,7 +12,7 @@ namespace _7.CountOccurances
         {
             Dictionary<int, int> occuranceStorage = new Dictionary<int, int>();
 
-            List<int> sequence = new List<int>() { 3, 4, 4, 2, 3, 3, 4, 3, 2 };
+            int[] sequence = { 3, 4, 4, 2, 3, 3, 4, 3, 2 };
 
             foreach (int number in sequence)
             {
@@ -25,7 +25,7 @@ namespace _7.CountOccurances
                     occuranceStorage[number] = 1;
                 }
             }
-
+            
             foreach (int key in occuranceStorage.Keys)
             {
                 Console.WriteLine($"Number: {key} -> {occuranceStorage[key]} times");
