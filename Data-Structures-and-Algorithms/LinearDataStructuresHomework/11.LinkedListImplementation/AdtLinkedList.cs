@@ -32,7 +32,7 @@ namespace _11.LinkedListImplementation
             this.Last = this.Last.Next;
             this.Count++;
         }
-
+		
         public bool Remove(T item)
         {
             var current = this.First;

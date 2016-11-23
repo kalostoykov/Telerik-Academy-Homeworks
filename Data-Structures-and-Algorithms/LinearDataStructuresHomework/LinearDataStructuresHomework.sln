@@ -21,6 +21,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "9.PrintSequenceMembers", "9
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "11.LinkedListImplementation", "11.LinkedListImplementation\11.LinkedListImplementation.csproj", "{5B567806-0C00-4249-BF13-5B134A6EC9BB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "12.AdtStackImplementation", "12.AdtStackImplementation\12.AdtStackImplementation.csproj", "{A5CABD03-04B0-4579-A805-3A795BDD1E23}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -63,6 +65,10 @@ Global
 		{5B567806-0C00-4249-BF13-5B134A6EC9BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5B567806-0C00-4249-BF13-5B134A6EC9BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5B567806-0C00-4249-BF13-5B134A6EC9BB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A5CABD03-04B0-4579-A805-3A795BDD1E23}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A5CABD03-04B0-4579-A805-3A795BDD1E23}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A5CABD03-04B0-4579-A805-3A795BDD1E23}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A5CABD03-04B0-4579-A805-3A795BDD1E23}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
