@@ -3,12 +3,12 @@
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <h1>Ultimate Sumator</h1>
     <div class="input-container">
-        <asp:Label runat="server" AssociatedControlID="TextBoxFirstNum" Text="First number:" />
+        <label for="TextBoxFirstNum">First number:</label>
         <asp:TextBox ID="TextBoxFirstNum" class="form-control" runat="server"></asp:TextBox>
     </div>
     <br />
     <div class="input-container">
-        <asp:Label runat="server" AssociatedControlID="TextBoxSecondNum" Text="Second number:" />
+        <label for="TextBoxSecondNum">Second number:</label>
         <asp:TextBox ID="TextBoxSecondNum" class="form-control" runat="server"></asp:TextBox>
     </div>
     <br />
@@ -18,8 +18,8 @@
     <br />
     <br />
     <div class="input-container">
-        <asp:Label runat="server" AssociatedControlID="TextBoxSum" Text="The sum is:" />
+        <label for="TextBoxSum">The sum is: </label>
         <asp:TextBox ID="TextBoxSum" class="form-control" runat="server"></asp:TextBox>
-    </div>
+</div>
 </asp:Content>
 
