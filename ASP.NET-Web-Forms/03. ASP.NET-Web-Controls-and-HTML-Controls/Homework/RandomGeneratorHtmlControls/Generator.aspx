@@ -20,7 +20,7 @@
             <button type="submit" id="ButtonGenerate" runat="server" onserverclick="ButtonGenerateClick">Generate number</button>
         </div>
         <div>
-            <label for="">Generated Number: </label>
+            <label for="result">Generated Number: </label>
             <strong id="result" runat="server" />
         </div>
     </form>

@@ -5,6 +5,8 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RandomGeneratorHtmlControls", "RandomGeneratorHtmlControls\RandomGeneratorHtmlControls.csproj", "{629F0782-A2F0-4162-965E-FFAE00A8C66B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RandomGeneratorWebControls", "RandomGeneratorWebControls\RandomGeneratorWebControls.csproj", "{5630522D-B6C1-4D22-BC8B-1BC72AB169F3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{629F0782-A2F0-4162-965E-FFAE00A8C66B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{629F0782-A2F0-4162-965E-FFAE00A8C66B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{629F0782-A2F0-4162-965E-FFAE00A8C66B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5630522D-B6C1-4D22-BC8B-1BC72AB169F3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5630522D-B6C1-4D22-BC8B-1BC72AB169F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5630522D-B6C1-4D22-BC8B-1BC72AB169F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5630522D-B6C1-4D22-BC8B-1BC72AB169F3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
