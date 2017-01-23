@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NamePrinter", "NamePrinter\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AssemblyLocation", "AssemblyLocation\AssemblyLocation.csproj", "{DBD15A02-E770-4A82-9357-CB19D81214B3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PageLifeCycle", "PageLifeCycle\PageLifeCycle.csproj", "{DB678916-A882-42F5-A1DB-1F155E8188D1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{DBD15A02-E770-4A82-9357-CB19D81214B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DBD15A02-E770-4A82-9357-CB19D81214B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DBD15A02-E770-4A82-9357-CB19D81214B3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DB678916-A882-42F5-A1DB-1F155E8188D1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DB678916-A882-42F5-A1DB-1F155E8188D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DB678916-A882-42F5-A1DB-1F155E8188D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DB678916-A882-42F5-A1DB-1F155E8188D1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
