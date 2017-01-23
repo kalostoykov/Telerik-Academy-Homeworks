@@ -20,6 +20,6 @@
     <div class="input-container">
         <label for="TextBoxSum">The sum is: </label>
         <asp:TextBox ID="TextBoxSum" class="form-control" runat="server"></asp:TextBox>
-</div>
+    </div>
 </asp:Content>
 
