@@ -18,8 +18,8 @@ namespace Escaping
         {
             string enteredText = this.TextBoxInput.Text;
 
-            this.LabelResult.Text = this.Server.HtmlEncode(enteredText);
             this.TextBoxResult.Text = this.Server.HtmlEncode(enteredText);
+            this.LabelResult.Text = this.Server.HtmlEncode(enteredText);
         }
     }
 }
