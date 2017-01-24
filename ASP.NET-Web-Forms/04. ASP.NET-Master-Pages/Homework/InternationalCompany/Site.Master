@@ -1,0 +1,19 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="InternationalCompany.Site" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title><%: Page.Title %> - International company</title>
+</head>
+<body>
+    <header >
+        <asp:ContentPlaceHolder id="HeaderContentPlaceHolder" runat="server" />
+        <div>International company</div>
+    </header>
+    <form id="mainForm" runat="server">
+        <asp:ContentPlaceHolder ID="PageContentPlaceHolder" runat="server">
+        </asp:ContentPlaceHolder>
+    </form>
+</body>
+</html>
