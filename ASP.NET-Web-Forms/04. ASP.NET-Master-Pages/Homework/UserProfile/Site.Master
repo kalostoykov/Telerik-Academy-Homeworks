@@ -1,0 +1,25 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="UserProfile.Site" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title><%: Page.Title %> - UserProfile</title>
+</head>
+<body>
+    <form id="mainForm" runat="server">
+        <aside id="sidebar">
+            <ul>
+                <li><a href="~/" runat="server">Home</a></li>
+                <li><a href="~/Views/Profile.aspx" runat="server">Profile</a></li>
+                <li><a href="~/Views/FriendList.aspx" runat="server">Friends</a></li>
+            </ul>
+        </aside>
+        <section class="main-content">
+            <asp:ContentPlaceHolder ID="MainContentPlaceHolder" runat="server">
+
+            </asp:ContentPlaceHolder>
+        </section>
+    </form>
+</body>
+</html>
