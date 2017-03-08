@@ -7,31 +7,39 @@
 @{
     ViewBag.Title = "Bit Calculator";
 }
-
-<h1>@ViewBag.Title</h1>
-
-@using (Html.BeginForm("Calculator", "Calculator", FormMethod.Post))
-{
-    @Html.ValidationSummary()
-    <div class="input-group">
-        @Html.LabelFor(m => m.Quantity)
-        @Html.TextBoxFor(m => m.Quantity, new { @class = "form-control" })
-        @Html.ValidationMessageFor(m => m.Quantity)
-    </div>
-    <div class="input-group">
-        @Html.LabelFor(m => m.Type)
-        @Html.DropDownList("Type", new SelectList(Model.Units, "Value", "Name"), new { @class = "form-control" })
-    </div>
-    <div class="input-group">
-        @Html.LabelFor(m => m.Kilo)
-        @Html.DropDownListFor(m => m.Kilo, new List<SelectListItem>()
+<div class="row">
+    <div class="col-md-4 col-md-offset-4">
+        <h1>@ViewBag.Title</h1>
+        @using (Html.BeginForm("Calculator", "Calculator", FormMethod.Post))
+        {
+            @Html.ValidationSummary()
+            <div class="input-group">
+                @Html.LabelFor(m => m.Quantity)
+                @Html.TextBoxFor(m => m.Quantity, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Quantity)
+            </div>
+            <div class="input-group">
+                @Html.LabelFor(m => m.Type)
+                @Html.DropDownList("Type", new SelectList(Model.Units, "Value", "Name"), new { @class = "form-control" })
+            </div>
+            <div class="input-group">
+                @Html.LabelFor(m => m.Kilo)
+                @Html.DropDownListFor(m => m.Kilo, new List<SelectListItem>()
          {
             new SelectListItem() { Text = "1024", Value = "1024" },
             new SelectListItem() { Text = "1000", Value = "1000" }
          },
          new { @class = "form-control" })
+            </div>
+            <div class="input-group">
+                <input id="btn-submit" type="submit" class="btn btn-default" value="Calculate" />
+            </div>
+        }
     </div>
-    <div class="input-group">
-        <input id="btn-submit" type="submit" class="btn btn-default" value="Calculate" />
+</div>
+<div class="output row">
+    <div class="col-md-4 col-md-offset-4">
+        <h1>Results:</h1>
+        @Html.Partial("_CalculatorResult", Model)
     </div>
-}
+</div>

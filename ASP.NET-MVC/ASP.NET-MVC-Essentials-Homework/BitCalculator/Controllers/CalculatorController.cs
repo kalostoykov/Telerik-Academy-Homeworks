@@ -30,7 +30,27 @@ namespace BitCalculator.Controllers
         [HttpPost]
         public ActionResult Calculator(CalculatorFormViewModel model)
         {
+            decimal chosenValue = decimal.Parse(model.Type);
+            decimal kilo = decimal.Parse(model.Kilo);
+            int quantity = model.Quantity;
+
+            foreach (StorageUnit unit in model.Units)
+            {
+                unit.RelativeValue = (chosenValue / unit.Value) * quantity;
+
+                if (kilo == 1024)
+                {
+                    unit.RelativeValue *= 1024.0m / 1000;
+                }
+            }
+
             return this.View(model);
         }
+
+        //[ChildActionOnly]
+        //public ActionResult CalculatorPartial(CalculatorFormViewModel model)
+        //{
+        //    return this.PartialView("_CalculatorResult", model);
+        //}
     }
 }
